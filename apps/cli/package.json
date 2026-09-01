@@ -1,0 +1,37 @@
+{
+  "name": "@kokoro/cli",
+  "version": "0.1.0",
+  "description": "Local Kokoro harness server and protocol CLI",
+  "type": "module",
+  "main": "./dist/main.js",
+  "types": "./dist/main.d.ts",
+  "bin": {
+    "kokoro": "./dist/bin.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/main.d.ts",
+      "import": "./dist/main.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "clean": "node -e \"require('node:fs').rmSync('dist',{recursive:true,force:true})\"",
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.test.json",
+    "test": "vitest run --root ../.. --config vitest.config.ts apps/cli/test",
+    "prepublishOnly": "npm run clean && npm run build"
+  },
+  "engines": {
+    "node": ">=22.19.0"
+  },
+  "dependencies": {
+    "@kokoro/client": "0.1.0",
+    "@kokoro/protocol": "0.1.0",
+    "@kokoro/runtime": "0.1.0"
+  }
+}

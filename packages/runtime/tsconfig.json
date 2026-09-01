@@ -1,0 +1,12 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "dist",
+    "tsBuildInfoFile": ".tmp/build.tsbuildinfo",
+    "paths": {
+      "@kokoro/protocol": ["../protocol/dist/index.d.ts"]
+    }
+  },
+  "include": ["src/**/*.ts"]
+}

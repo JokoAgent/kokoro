@@ -1,0 +1,30 @@
+{
+  "name": "kokoro",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "npm@11.13.0",
+  "engines": {
+    "node": ">=22.19.0"
+  },
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "clean": "node scripts/clean.mjs",
+    "build": "npm run build -w @kokoro/protocol && npm run build -w @kokoro/client && npm run build -w @kokoro/runtime && npm run build -w @kokoro/cli",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "boundaries": "vitest run scripts/check-boundaries.test.ts && tsx scripts/check-boundaries.ts",
+    "check": "npm run boundaries && npm run build && npm run typecheck",
+    "test": "vitest run",
+    "test:ci": "node scripts/test-ci.mjs",
+    "test:packed-install": "node scripts/test-packed-install.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "24.3.0",
+    "tsx": "4.20.5",
+    "typescript": "5.9.2",
+    "vitest": "3.2.4"
+  }
+}

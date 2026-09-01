@@ -1,0 +1,38 @@
+{
+  "name": "@kokoro/protocol",
+  "version": "0.1.0",
+  "description": "Stable transport-neutral public protocol for Kokoro",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./fixtures/protocol-v1.golden.json": "./fixtures/protocol-v1.golden.json",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "fixtures",
+    "README.md"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "clean": "shx rm -rf dist",
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.test.json",
+    "test": "vitest --run",
+    "prepublishOnly": "npm run clean && npm run build"
+  },
+  "engines": {
+    "node": ">=22.19.0"
+  },
+  "devDependencies": {
+    "@types/node": "24.3.0",
+    "shx": "0.4.0",
+    "typescript": "5.9.2",
+    "vitest": "3.2.4"
+  }
+}

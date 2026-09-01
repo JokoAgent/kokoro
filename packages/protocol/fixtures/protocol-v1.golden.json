@@ -1,0 +1,380 @@
+{
+  "clientHello": {
+    "protocol": "kokoro/1",
+    "kind": "hello",
+    "messageId": "message-client-hello",
+    "correlationId": "correlation-connection",
+    "client": {
+      "name": "golden-client",
+      "version": "1.0.0"
+    },
+    "maxFrameBytes": 16777216
+  },
+  "request": {
+    "protocol": "kokoro/1",
+    "kind": "request",
+    "messageId": "message-request-1",
+    "correlationId": "correlation-request-1",
+    "expectedRevision": 7,
+    "command": {
+      "type": "stimulus",
+      "personaId": "persona-golden",
+      "idempotencyKey": "stimulus-key-1",
+      "stimulus": {
+        "kind": "user_message",
+        "content": {
+          "text": "Hello, Kokoro."
+        },
+        "occurredAt": "2026-08-30T00:00:01.000Z",
+        "source": "golden-fixture"
+      }
+    }
+  },
+  "serverHello": {
+    "protocol": "kokoro/1",
+    "kind": "hello",
+    "messageId": "message-server-hello",
+    "correlationId": "correlation-connection",
+    "replyTo": "message-client-hello",
+    "snapshot": {
+      "revision": 7,
+      "capturedAt": "2026-08-30T00:00:00.000Z",
+      "personas": []
+    },
+    "outcome": {
+      "status": "ok",
+      "server": {
+        "name": "kokoro",
+        "version": "0.1.0"
+      },
+      "capabilities": {
+        "protocol": "kokoro/1",
+        "serverVersion": "0.1.0",
+        "maxFrameBytes": 16777216,
+        "commands": [
+          "create",
+          "init",
+          "start",
+          "pause",
+          "resume",
+          "stop",
+          "force",
+          "stimulus",
+          "callback",
+          "owner_documents",
+          "put_owner_document",
+          "history",
+          "branch",
+          "clone",
+          "restore",
+          "delete",
+          "locales",
+          "set_locales",
+          "retry",
+          "capabilities",
+          "observations",
+          "snapshot"
+        ],
+        "availableCommands": ["create", "locales", "capabilities", "snapshot"],
+        "observationKinds": [
+          "model_input",
+          "internal_cognition",
+          "provider_attempt",
+          "usage",
+          "tool_proposal",
+          "tool_dispatch",
+          "tool_outcome",
+          "tool_callback",
+          "event_committed",
+          "publication",
+          "hippocampus",
+          "lifecycle",
+          "queue",
+          "diagnostic"
+        ],
+        "locales": [
+          {
+            "locale": "en",
+            "label": "English",
+            "ui": true,
+            "prompt": true
+          },
+          {
+            "locale": "zh-CN",
+            "label": "简体中文",
+            "ui": true,
+            "prompt": true
+          }
+        ],
+        "providers": [],
+        "tools": [],
+        "features": {
+          "continuation": true,
+          "publication": true,
+          "hippocampus": true
+        }
+      }
+    }
+  },
+  "response": {
+    "protocol": "kokoro/1",
+    "kind": "response",
+    "messageId": "message-response-1",
+    "correlationId": "correlation-request-1",
+    "replyTo": "message-request-1",
+    "snapshot": {
+      "revision": 8,
+      "capturedAt": "2026-08-30T00:00:02.000Z",
+      "personas": []
+    },
+    "outcome": {
+      "status": "ok",
+      "result": {
+        "type": "stimulus",
+        "stimulusId": "stimulus-1",
+        "workItemId": "work-1",
+        "acceptedAt": "2026-08-30T00:00:02.000Z"
+      }
+    }
+  },
+  "events": [
+    {
+      "protocol": "kokoro/1",
+      "kind": "event",
+      "messageId": "message-event-cognition",
+      "correlationId": "correlation-run-1",
+      "causationId": "message-request-1",
+      "snapshot": {
+        "revision": 9,
+        "capturedAt": "2026-08-30T00:00:03.000Z",
+        "personas": []
+      },
+      "record": {
+        "observationId": "observation-cognition",
+        "cursor": "cursor-1",
+        "personaId": "persona-golden",
+        "runId": "run-1",
+        "eventId": "event-1",
+        "occurredAt": "2026-08-30T00:00:03.000Z",
+        "correlationId": "correlation-run-1",
+        "observation": {
+          "kind": "internal_cognition",
+          "attemptId": "attempt-1",
+          "channel": "assistant",
+          "sequence": 0,
+          "content": "I should inspect the workspace.",
+          "attemptState": "completed",
+          "externalMessage": false
+        }
+      }
+    },
+    {
+      "protocol": "kokoro/1",
+      "kind": "event",
+      "messageId": "message-event-proposal",
+      "correlationId": "correlation-run-1",
+      "causationId": "message-event-cognition",
+      "snapshot": {
+        "revision": 10,
+        "capturedAt": "2026-08-30T00:00:04.000Z",
+        "personas": []
+      },
+      "record": {
+        "observationId": "observation-proposal",
+        "cursor": "cursor-2",
+        "personaId": "persona-golden",
+        "runId": "run-1",
+        "eventId": "event-1",
+        "occurredAt": "2026-08-30T00:00:04.000Z",
+        "correlationId": "correlation-run-1",
+        "observation": {
+          "kind": "tool_proposal",
+          "attemptId": "attempt-1",
+          "toolCallId": "tool-call-1",
+          "toolName": "send_message",
+          "arguments": {
+            "text": "Done"
+          },
+          "proposedAt": "2026-08-30T00:00:04.000Z"
+        }
+      }
+    },
+    {
+      "protocol": "kokoro/1",
+      "kind": "event",
+      "messageId": "message-event-dispatch",
+      "correlationId": "correlation-run-1",
+      "causationId": "message-event-proposal",
+      "snapshot": {
+        "revision": 11,
+        "capturedAt": "2026-08-30T00:00:05.000Z",
+        "personas": []
+      },
+      "record": {
+        "observationId": "observation-dispatch",
+        "cursor": "cursor-3",
+        "personaId": "persona-golden",
+        "runId": "run-1",
+        "eventId": "event-1",
+        "occurredAt": "2026-08-30T00:00:05.000Z",
+        "correlationId": "correlation-run-1",
+        "observation": {
+          "kind": "tool_dispatch",
+          "toolCallId": "tool-call-1",
+          "dispatchId": "dispatch-1",
+          "intentId": "intent-1",
+          "state": "dispatched",
+          "checkedAt": "2026-08-30T00:00:05.000Z",
+          "externalEffect": "possible",
+          "authority": [
+            {
+              "decisionId": "decision-1",
+              "stage": "dispatch",
+              "allowed": true,
+              "revision": "policy-1",
+              "reason": null,
+              "checkedAt": "2026-08-30T00:00:05.000Z"
+            }
+          ],
+          "receipt": null,
+          "denial": null
+        }
+      }
+    },
+    {
+      "protocol": "kokoro/1",
+      "kind": "event",
+      "messageId": "message-event-unknown",
+      "correlationId": "correlation-run-1",
+      "causationId": "message-event-dispatch",
+      "snapshot": {
+        "revision": 12,
+        "capturedAt": "2026-08-30T00:00:06.000Z",
+        "personas": []
+      },
+      "record": {
+        "observationId": "observation-unknown",
+        "cursor": "cursor-4",
+        "personaId": "persona-golden",
+        "runId": "run-1",
+        "eventId": "event-1",
+        "occurredAt": "2026-08-30T00:00:06.000Z",
+        "correlationId": "correlation-run-1",
+        "observation": {
+          "kind": "tool_outcome",
+          "toolCallId": "tool-call-1",
+          "dispatchId": "dispatch-1",
+          "state": "unknown",
+          "externalEffect": "unknown",
+          "result": null,
+          "error": {
+            "code": "outcome_unknown",
+            "message": "The transport ended after dispatch.",
+            "retryable": false,
+            "details": null
+          }
+        }
+      }
+    },
+    {
+      "protocol": "kokoro/1",
+      "kind": "event",
+      "messageId": "message-event-commit",
+      "correlationId": "correlation-run-1",
+      "causationId": "message-event-unknown",
+      "snapshot": {
+        "revision": 13,
+        "capturedAt": "2026-08-30T00:00:07.000Z",
+        "personas": []
+      },
+      "record": {
+        "observationId": "observation-commit",
+        "cursor": "cursor-5",
+        "personaId": "persona-golden",
+        "runId": "run-1",
+        "eventId": "event-1",
+        "occurredAt": "2026-08-30T00:00:07.000Z",
+        "correlationId": "correlation-run-1",
+        "observation": {
+          "kind": "event_committed",
+          "eventId": "event-1",
+          "sourceWorkItemIds": ["work-1"],
+          "summary": "Inspected the workspace and attempted delivery.",
+          "needsMemory": true,
+          "checkpoint": {
+            "checkpointId": "checkpoint-1",
+            "commitId": "0123456789abcdef",
+            "summary": "Inspect workspace",
+            "createdAt": "2026-08-30T00:00:07.000Z"
+          },
+          "committedAt": "2026-08-30T00:00:07.000Z"
+        }
+      }
+    },
+    {
+      "protocol": "kokoro/1",
+      "kind": "event",
+      "messageId": "message-event-publication",
+      "correlationId": "correlation-run-1",
+      "causationId": "message-event-commit",
+      "snapshot": {
+        "revision": 14,
+        "capturedAt": "2026-08-30T00:00:08.000Z",
+        "personas": []
+      },
+      "record": {
+        "observationId": "observation-publication",
+        "cursor": "cursor-6",
+        "personaId": "persona-golden",
+        "runId": "run-1",
+        "eventId": "event-1",
+        "occurredAt": "2026-08-30T00:00:08.000Z",
+        "correlationId": "correlation-run-1",
+        "observation": {
+          "kind": "publication",
+          "publicationId": "publication-1",
+          "eventId": "event-1",
+          "checkpointId": "checkpoint-1",
+          "state": "delivered",
+          "attempt": 1,
+          "retryAt": null,
+          "receipt": {
+            "consumer": "golden"
+          },
+          "error": null
+        }
+      }
+    },
+    {
+      "protocol": "kokoro/1",
+      "kind": "event",
+      "messageId": "message-event-hippocampus",
+      "correlationId": "correlation-run-1",
+      "causationId": "message-event-commit",
+      "snapshot": {
+        "revision": 15,
+        "capturedAt": "2026-08-30T00:00:09.000Z",
+        "personas": []
+      },
+      "record": {
+        "observationId": "observation-hippocampus",
+        "cursor": "cursor-7",
+        "personaId": "persona-golden",
+        "runId": "run-1",
+        "eventId": "event-1",
+        "occurredAt": "2026-08-30T00:00:09.000Z",
+        "correlationId": "correlation-run-1",
+        "observation": {
+          "kind": "hippocampus",
+          "jobId": "memory-job-1",
+          "eventId": "event-1",
+          "checkpointId": "checkpoint-1",
+          "state": "applied",
+          "attempt": 1,
+          "retryAt": null,
+          "error": null
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+/.agent-docs/
+/AGENTS.md
+/.deprecated/
+node_modules/
+dist/
+coverage/
+*.tgz
+.pnpm-store/
+.artifacts/
+.tmp/
